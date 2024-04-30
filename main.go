@@ -1,14 +1,21 @@
 package main
 
 import (
-    "fmt"
+    "encoding/json"
     "net/http"
 )
 
-func main() {
-    http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-        fmt.Fprint(w, "Hello World")
-    })
+type Response struct {
+    Message string json:"message"
+}
 
+func helloWorld(w http.ResponseWriter, r *http.Request) {
+    response := Response{Message: "Hello World"}
+    w.Header().Set("Content-Type", "application/json")
+    json.NewEncoder(w).Encode(response)
+}
+
+func main() {
+    http.HandleFunc("/", helloWorld)
     http.ListenAndServe(":8900", nil)
 }
