@@ -8,7 +8,7 @@ WORKDIR /app
 COPY . .
 
 # Соберите приложение
-RUN go build -o server
+RUN go build -o server server.go
 
 # Используйте образ httpd как финальный
 FROM httpd:2.4
