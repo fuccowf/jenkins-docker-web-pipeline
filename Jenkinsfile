@@ -6,7 +6,7 @@ pipeline {
             steps {
                 script {
                     // Клонирование Git репозитория
-                    git 'URL_ВАШЕГО_РЕПОЗИТОРИЯ'
+                    git 'https://github.com/fuccowf/jenkins-docker-web-pipeline.git'
 
                     // Сборка Docker образа
                     sh 'docker build -t my-httpd-server .'
